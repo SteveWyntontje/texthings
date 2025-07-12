@@ -34,7 +34,10 @@
 	},
 	"permissions": [
 		"declarativeNetRequest",
-		"webRequest"
+		"declarativeNetRequestWithHostAccess",
+		"webRequest",
+		"storage",
+		"alarms"
 	],
 	"host_permissions": [
 		"<all_urls>"

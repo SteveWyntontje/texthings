@@ -1,23 +1,23 @@
 // Handle a click to the toolbar icon
 chrome.action.onClicked.addListener(async (tab) => {
-    const enabled = await get_option('enabled');
-    if (enabled) {
-        chrome.action.setIcon({
-            path: {
-                "38": "img/browser-disabled38.png",
-                "19": "img/browser-disabled19.png"
-            }
-        });
-        await set_option('enabled', false);
-    } else {
-        chrome.action.setIcon({
-            path: {
-                "38": "img/browser38.png",
-                "19": "img/browser19.png"
-            }
-        });
-        await set_option('enabled', true);
-    }
+	const enabled = await get_option('enabled');
+	if (enabled) {
+		chrome.action.setIcon({
+			path: {
+				"38": "../img/browser-disabled38.png",
+				"19": "../img/browser-disabled19.png"
+			}
+		});
+		await set_option('enabled', false);
+	} else {
+		chrome.action.setIcon({
+			path: {
+				"38": "../img/browser38.png",
+				"19": "../img/browser19.png"
+			}
+		});
+		await set_option('enabled', true);
+	}
 });
 
 // Respond to requests from other scripts
@@ -115,9 +115,20 @@ async function get_process_class() {
 	return await get_option('process_class');
 }
 
-// --- Storage helpers for Manifest V3 ---
+chrome.alarms.create('keepAlive', { periodInMinutes: 1 });
 
-const default_options = {
+chrome.alarms.onAlarm.addListener((alarm) => {
+	if (alarm.name === 'keepAlive') {
+		// This will wake up the service worker, but do minimal work here
+		// You can log or perform lightweight tasks if needed
+		console.log('Service worker kept alive');
+	}
+});
+
+
+// originally options.js
+
+var default_options = {
 	enabled: true,
 	white_list_mode: false,
 	sites: [],
@@ -132,24 +143,26 @@ const default_options = {
 	skip_tags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
 };
 
-async function get_option(option_name) {
-	if (!option_allowed(option_name)) throw "Option " + option_name + " not supported";
-	return new Promise((resolve) => {
-		chrome.storage.local.get([option_name], (result) => {
-			if (result[option_name] === undefined) {
-				resolve(default_options[option_name]);
-			} else {
-				resolve(result[option_name]);
-			}
-		});
-	});
+function get_option(option_name) {
+	for (var option in default_options) {
+		if (!(option in chrome.storage.local)) {
+			chrome.storage.local[option] = JSON.stringify(default_options[option]);
+		}
+	}
+
+	if (option_allowed(option_name)) {
+		return JSON.parse(chrome.storage.local[option_name]);
+	} else {
+		throw "Option " + option_name + " not supported";
+	}
 }
 
-async function set_option(option_name, value) {
-	if (!option_allowed(option_name)) throw "Option " + option_name + " not supported";
-	return new Promise((resolve) => {
-		chrome.storage.local.set({ [option_name]: value }, resolve);
-	});
+function set_option(option_name, value) {
+	if (option_allowed(option_name)) {
+		chrome.storage.local[option_name] = JSON.stringify(value);
+	} else {
+		throw "Option " + option_name + " not supported";
+	}
 }
 
 function option_allowed(option_name) {
