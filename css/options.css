@@ -1,61 +1,64 @@
 td {
-  vertical-align: top;
+	vertical-align: top;
 }
 
-#selSite, #txtAddSite, #selTag, #txtAddTag {
-  min-width: 250px;
+#selSite,
+#txtAddSite,
+#selTag,
+#txtAddTag {
+	min-width: 250px;
 }
 
 .optionInfo {
-  font-size: 10pt;
-  font-style: italic;
+	font-size: 10pt;
+	font-style: italic;
 }
 
-.optionInfo > em {
-  font-weight: bold;
+.optionInfo>em {
+	font-weight: bold;
 }
 
 #status {
-  left: 50%;
-  top: 20px;
-  position: fixed;
-  border: solid 1px #aa7;
-  background-color: #ffb;
+	left: 50%;
+	top: 20px;
+	position: fixed;
+	border: solid 1px #aa7;
+	background-color: #ffb;
 
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 
-  padding: 5px;
+	padding: 5px;
 
-  opacity: 0;
+	opacity: 0;
 
-  -moz-transition: opacity 0.25s ease-in-out;
-  -o-transition: opacity 0.25s ease-in-out;
-  -webkit-transition: opacity 0.25s ease-in-out;
-  transition: opacity 0.25s ease-in-out
+	-moz-transition: opacity 0.25s ease-in-out;
+	-o-transition: opacity 0.25s ease-in-out;
+	-webkit-transition: opacity 0.25s ease-in-out;
+	transition: opacity 0.25s ease-in-out
 }
 
 #status.visible {
-  opacity: 1;
+	opacity: 1;
 
-  -moz-transition: opacity 0.25s ease-in-out;
-  -o-transition: opacity 0.25s ease-in-out;
-  -webkit-transition: opacity 0.25s ease-in-out;
-  transition: opacity 0.25s ease-in-out
+	-moz-transition: opacity 0.25s ease-in-out;
+	-o-transition: opacity 0.25s ease-in-out;
+	-webkit-transition: opacity 0.25s ease-in-out;
+	transition: opacity 0.25s ease-in-out
 }
 
 .inlineSuboption {
-  display: inline-block;
-  margin: 0 15px;
+	display: inline-block;
+	margin: 0 15px;
 }
 
 .customDelim {
-  width: 2em;
-  margin-left: .5em;
+	width: 2em;
+	margin-left: .5em;
 }
 
 .classBox {
-  width: 20em;
-  margin-left: .5em;
+	width: 20em;
+	margin-left: .5em;
 }

@@ -1,98 +1,99 @@
 <html>
 <head>
-  <title>TeX All the Things Options</title>
-
-  <link rel="stylesheet" href="css/options.css">
+	<meta http-equiv="Content-Security-Policy">
+	<title>TeX All the Things Options</title>
+	<link rel="stylesheet" href="css/options.css">
 </head>
-
 <body>
-  <h1>Options</h1>
-  <div id="status"></div>
-
-  <h2>Math Delimiters</h2>
-  <div>
-    <div class="inlineSuboption">
-      <h3>Inline Math</h3>
-      <p><input type="checkbox" id="chkInlineDollar">$y = mx +b$</p>
-      <p><input type="checkbox" id="chkInlineBracket">[;y = mx +b;]</p>
-      <p><input type="checkbox" id="chkInlineCustom">Custom:<input type="text" id="customInlineOpen" class="customDelim"><input type="text" id="customInlineClose" class="customDelim"></p>
-    </div>
-    <div class="inlineSuboption">
-      <h3>Display Math</h3>
-      <p><input type="checkbox" id="chkDisplayDollar">$$y = mx +b$$</p>
-      <p><input type="checkbox" id="chkDisplayBracket">\[y = mx +b\]</p>
-      <p><input type="checkbox" id="chkDisplayCustom">Custom:<input type="text" id="customDisplayOpen" class="customDelim"><input type="text" id="customDisplayClose" class="customDelim"></p>
-    </div>
-  </div>
-
-  <h2>HTML Tag Filter</h2>
-  <p class="optionInfo">
-    Add HTML tags to the list below (e.g. script, code). The contents of these tags will not be typeset.
-  </p>
-  <table>
-    <tbody>
-      <tr>
-        <td><input type="text" id="txtAddTag"></td>
-        <td><button id="btnAddTag">Add</button></td>
-      </tr>
-      <tr>
-        <td><select size="8" id="selTag"></select></td>
-        <td>
-          <button id="btnRemoveTag">Remove</button><br>
-          <button id="btnClearTag">Clear</button><br>
-          <button id="btnDefaultTags">Restore Defaults</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>Site Filter</h2>
-  <p class="optionInfo">
-    Add domains and subdomains to the list below (e.g. facebook.com, code.google.com).
-  </p>
-  <table id="sitesList">
-    <tbody>
-      <tr>
-        <td><input type="text" id="txtAddSite"></td>
-        <td><button id="btnAddSite">Add</button></td>
-      </tr>
-      <tr>
-        <td><select size="8" id="selSite"></select></td>
-        <td>
-          <button id="btnRemoveSite">Remove</button><br>
-          <button id="btnClearSite">Clear</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h3><input type="checkbox" id="chkWhiteListMode">White List Mode</h3>
-  <p class="optionInfo">
-    If White List Mode is enabled, only those domains in the list will be typeset.
-    Otherwise, only domains in the list will <em>not</em> be typeset.
-  </p>
-
-  <h2>Ignored Classes Regex</h2>
-  <p class="optionInfo">
-    Add a class name below to mark elements whose contents should not be processed. <br>
-    Note that this is a regular expression, and so you need to be sure to quote any regexp special characters. The pattern is inserted into one that requires your pattern to match a complete word, so setting the pattern to "class2" will cause it to match an element with class="class1 class2 class3" but not class="myclass2". Note that you can assign several classes by separating them by the vertical line character (|). For instance, with the pattern set to  "class1|class2" any element assigned a class of either class1 or class2 will be skipped.
-  </p>
-  <p><input type="checkbox" id="chkIgnoreClass">Ignore Class:<input type="text" id="ignoreClass" class="classBox"></p>
-
-  <h2>Processed Classes Regex</h2>
-  <p class="optionInfo">
-    Add a class name below to mark elements whose contents <i>should</i> be processed, even if they would have been ignored by "Ignored Classes Regex."<br>
-    Note that this is a regular expression, and so you need to be sure to quote any regexp special characters. The pattern is inserted into one that requires your pattern to match a complete word, so setting the pattern to "class2" will cause it to match an element with class="class1 class2 class3" but not class="myclass2". Note that you can assign several classes by separating them by the vertical line character (|). For instance, with the pattern set to  "class1|class2" any element assigned a class of either class1 or class2 will be processed.
-  </p>
-  <p><input type="checkbox" id="chkProcessClass">Process Class:<input type="text" id="processClass" class="classBox"></p>
-
-  <button id="save">Save</button>
-
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery.watermark.min.js"></script>
-  <script src="js/options.js"></script>
-  <script src="js/optionsPage.js"></script>
+	<h1>Options</h1>
+	<div id="status"></div>
+	<h2>Math Delimiters</h2>
+	<div>
+		<div class="inlineSuboption">
+			<h3>Inline Math</h3>
+			<p><input type="checkbox" id="chkInlineDollar">$y = mx +b$</p>
+			<p><input type="checkbox" id="chkInlineBracket">[;y = mx +b;]</p>
+			<p><input type="checkbox" id="chkInlineCustom">Custom:<input type="text" id="customInlineOpen"
+				class="customDelim"><input type="text" id="customInlineClose" class="customDelim"></p>
+		</div>
+		<div class="inlineSuboption">
+			<h3>Display Math</h3>
+			<p><input type="checkbox" id="chkDisplayDollar">$$y = mx +b$$</p>
+			<p><input type="checkbox" id="chkDisplayBracket">\[y = mx +b\]</p>
+			<p><input type="checkbox" id="chkDisplayCustom">Custom:<input type="text" id="customDisplayOpen"
+				class="customDelim"><input type="text" id="customDisplayClose" class="customDelim"></p>
+		</div>
+	</div>
+	<h2>HTML Tag Filter</h2>
+	<p class="optionInfo">
+		Add HTML tags to the list below (e.g. script, code). The contents of these tags will not be typeset.
+	</p>
+	<table>
+		<tbody>
+			<tr>
+				<td><input type="text" id="txtAddTag"></td>
+				<td><button id="btnAddTag">Add</button></td>
+			</tr>
+			<tr>
+				<td><select size="8" id="selTag"></select></td>
+				<td>
+					<button id="btnRemoveTag">Remove</button><br>
+					<button id="btnClearTag">Clear</button><br>
+					<button id="btnDefaultTags">Restore Defaults</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<h2>Site Filter</h2>
+	<p class="optionInfo">
+		Add domains and subdomains to the list below (e.g. facebook.com, code.google.com).
+	</p>
+	<table id="sitesList">
+		<tbody>
+			<tr>
+				<td><input type="text" id="txtAddSite"></td>
+				<td><button id="btnAddSite">Add</button></td>
+			</tr>
+			<tr>
+				<td><select size="8" id="selSite"></select></td>
+				<td>
+					<button id="btnRemoveSite">Remove</button><br>
+					<button id="btnClearSite">Clear</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<h3><input type="checkbox" id="chkWhiteListMode">White List Mode</h3>
+	<p class="optionInfo">
+		If White List Mode is enabled, only those domains in the list will be typeset.
+		Otherwise, only domains in the list will <em>not</em> be typeset.
+	</p>
+	<h2>Ignored Classes Regex</h2>
+	<p class="optionInfo">
+		Add a class name below to mark elements whose contents should not be processed. <br>
+		Note that this is a regular expression, and so you need to be sure to quote any regexp special characters. The
+		pattern is inserted into one that requires your pattern to match a complete word, so setting the pattern to
+		"class2" will cause it to match an element with class="class1 class2 class3" but not class="myclass2". Note that
+		you can assign several classes by separating them by the vertical line character (|). For instance, with the
+		pattern set to "class1|class2" any element assigned a class of either class1 or class2 will be skipped.
+	</p>
+	<p><input type="checkbox" id="chkIgnoreClass">Ignore Class:<input type="text" id="ignoreClass" class="classBox"></p>
+	<h2>Processed Classes Regex</h2>
+	<p class="optionInfo">
+		Add a class name below to mark elements whose contents <i>should</i> be processed, even if they would have been
+		ignored by "Ignored Classes Regex."<br>
+		Note that this is a regular expression, and so you need to be sure to quote any regexp special characters. The
+		pattern is inserted into one that requires your pattern to match a complete word, so setting the pattern to
+		"class2" will cause it to match an element with class="class1 class2 class3" but not class="myclass2". Note that
+		you can assign several classes by separating them by the vertical line character (|). For instance, with the
+		pattern set to "class1|class2" any element assigned a class of either class1 or class2 will be processed.
+	</p>
+	<p><input type="checkbox" id="chkProcessClass">Process Class:<input type="text" id="processClass" class="classBox">
+	</p>
+	<button id="save">Save</button>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.watermark.min.js"></script>
+	<script src="js/options.js"></script>
+	<script src="js/optionsPage.js"></script>
 </body>
-
-
 </html>
